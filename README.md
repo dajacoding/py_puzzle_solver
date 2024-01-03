@@ -5,7 +5,7 @@
 
 # das Problem
 
-- theoretische (36*61)**12 == 1.2*10**40 Kobinationen
+- theoretische (36x61)^12 = 1.2x10^40 Kobinationen
   -> bruteforce - Methode
       - funktioniert; starker Optimierungsbedarf
       - zeitlicher Aufwand enorm
