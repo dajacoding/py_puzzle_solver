@@ -1,4 +1,5 @@
 # py_puzzle_solver
+zusammenfassende Datei fuer essenzielle Programmlogik: py_puzzle.py
 
 - diverse Funktionen kuerzbar
 - diverse Auslagerung in Funktionen vermeidbar
