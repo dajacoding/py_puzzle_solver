@@ -1,10 +1,9 @@
 import time
 
 # gibt an, wieviele Teile auf das Spielfeld gelegt werden sollen; 1 - 12
-testLaenge = 11
-
+testLaenge = 5
 # gibt die Position des Sonderelements an; 0 - 9
-positionSonderElement = 7
+positionSonderElement = 6
 
 def funktionStart():    
     print("Startzeit:  ", time.ctime(time.time()))
@@ -21,7 +20,7 @@ def listenPruefung(sonderElement):
     # felder = alleKoordinaten
     felder = koordinatenInReihen
     belegteFelder = unbelegteFelder()
-    belegteFelder[elementAbgleich(sorted(sonderElement if type(sonderElement) != int else [sonderElement]), felder)] = -1
+    belegteFelder[elementAbgleich(sorted(sonderElement), felder)] = -1
 
     return feldUndTeil(felder, teile, belegteFelder)
 
@@ -29,8 +28,8 @@ def listenPruefung(sonderElement):
 # Abfrage nach jeder Feld - Teil - Kombination
 def feldUndTeil(felder, teile, belegteFelder):
 
-    # if not reihenBelegt(belegteFelder):
-    #     return rueckbauBelegteFelder(belegteFelder)
+    if not reihenBelegt(belegteFelder):
+        return rueckbauBelegteFelder(belegteFelder)
 
     for f, feld in enumerate(felder):         
         if belegteFelder[f] != None: continue 
@@ -47,17 +46,17 @@ def feldUndTeil(felder, teile, belegteFelder):
 
 # Pruefung auf befuellte Reihen
 def reihenBelegt(belegteFelder):
-    noneIndex = belegteFelder.index(None)
+    # noneIndex = belegteFelder.index(None)
     # reihenLaenge = [5, 6, 7, 8, 9, 8, 7, 6, 5]
     reihenLaengeAddiert = [5, 11, 18, 26, 35, 43, 50, 56, 61]
-    # anzahlBelegteFelder = len([b for b in belegteFelder[:-1] if b != None])
+    anzahlBelegteFelder = len([b for b in belegteFelder[:-1] if b != None])
     rl = 0
     for e, r in enumerate(reihenLaengeAddiert):
-        if r > noneIndex:
+        if r > anzahlBelegteFelder:
             rl = e - 3
             break
-    if rl >= 0:
-        for b in belegteFelder[:reihenLaengeAddiert[rl]]:
+    if rl >= 0:   
+        for b in belegteFelder[:reihenLaengeAddiert[rl] - 1]:
             if b == None:
                 return False
     return True
@@ -237,16 +236,16 @@ koordinatenInReihen =[[6, 6, 6, 6], [6, 6, 6, 1], [6, 6, 1, 1], [6, 1, 1, 1], [1
                      ]
 
 # Positionen fuer das Sonderelement
-alleSonderelementPositionen = [(0),
-                               (5),
-                               (3, 3, 3),
-                               (2, 2),
-                               (2, 2, 1),
-                               (2, 1, 1, 1),
-                               (6, 1, 1, 1),
-                               (4, 4, 4),
-                               (6, 5, 5),
-                               (4, 5, 5, 5)
+alleSonderelementPositionen = [[0],
+                               [5],
+                               [3, 3, 3],
+                               [2, 2],
+                               [2, 2, 1],
+                               [2, 1, 1, 1],
+                               [6, 1, 1, 1],
+                               [4, 4, 4],
+                               [6, 5, 5],
+                               [4, 5, 5, 5]
                               ]
 
 # rotiert ein Element um 120 Grad im Uhrzeigersinn
