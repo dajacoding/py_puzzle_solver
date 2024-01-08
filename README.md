@@ -7,7 +7,7 @@ zusammenfassende Datei fuer essenzielle Programmlogik: py_puzzle.py
 
 # das Problem
 
-theoretische (36x61)^12 = 1.2x10^40 Kobinationen
+theoretische (36x61)^12 = 1.2x10^40 Kombinationen
 - bruteforce - Methode
   - funktioniert; starker Optimierungsbedarf
   - zeitlicher Aufwand enorm
