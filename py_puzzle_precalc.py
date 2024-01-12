@@ -41,7 +41,7 @@ def listenPruefung(sonderElement):
     
 
 # Iteration durch alle möglichen Teile - Positionen 
-def abgleichTeileInPositionen(loesung, teileInPositionen, teilInTeileInPositionen): # ABBRUCHBEDINGUNGEN HABEN EINEN FEHLER
+def abgleichTeileInPositionen(loesung, teileInPositionen, teilInTeileInPositionen): # ABBRUCHBEDINGUNGEN OPTIMIEREN
     for teil in teileInPositionen[teilInTeileInPositionen]:
         if not set(teil).intersection(loesung):
             loesung += teil
