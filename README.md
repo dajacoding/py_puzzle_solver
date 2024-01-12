@@ -1,6 +1,6 @@
 # py_puzzle_solver
 zusammenfassende Datei fuer essenzielle Programmlogik: py_puzzle.py
- (!!!erste Optimierung von py_puzzle ist py_puzzle_precalc.py (Vorberechnung möglicher Positionen je Teil => Listenabgleich auf doppelte Feldbelegung))
+ (erste Optimierung von py_puzzle ist py_puzzle_precalc.py (Vorberechnung möglicher Positionen je Teil => Listenabgleich auf doppelte Feldbelegung))
 
 - neue Iterationsbedingung durch reihengestuetzte Initiierung der Felderliste (nur in py_puzzle.py)
 - diverse Funktionen kuerzbar
