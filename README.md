@@ -17,4 +17,5 @@ theoretische (36x61)^12 = 1.2x10^40 Kombinationen
  
 # die Koordinaten
 
-- ein Ordner mit 12 txt-Dateien
+- ein Ordner mit 12 txt-Dateien 'teile_koordinaten' steht zur Verfuegung
+- Herkunft der Daten pp_precalc_print.py 
