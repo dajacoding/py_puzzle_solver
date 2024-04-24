@@ -14,3 +14,7 @@ theoretische (36x61)^12 = 1.2x10^40 Kombinationen
   - zeitlicher Aufwand enorm -> Alternative finden
 - bei Vorcalculation aller Koordinaten:
   - 641.805.762.426.921.958.440.960 Moeglichkeiten -> 6.4x10^23
+ 
+# die Koordinaten
+
+- ein Ordner mit 12 txt-Dateien
