@@ -16,9 +16,8 @@ def ausdruck(loesung):
 
         dateiname = 'Teil'
         if x < 10:
-            dateiname = dateiname + '0' + str(x)
-        else :
-            dateiname = dateiname + str(x)
+            dateiname = dateiname + '0'
+        dateiname = dateiname + str(x)
 
         with open(dateiname + '.txt', 'w') as f:
             for line in teil:
