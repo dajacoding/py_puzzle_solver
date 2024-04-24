@@ -11,18 +11,18 @@ def ausdruck(loesung):
     
     for teil in loesung:
         for line in teil:
-            sMitte = '   <teil>\n'
-            sMitte = sMitte + '      <id>teil' + str(x) + '</id>\n'
-            sMitte = sMitte + '      <koords>\n'
+            sMitte = '    <teil>\n'
+            sMitte += '        <id>teil' + str(x) + '</id>\n'
+            sMitte += '        <koords>\n'
             for k in range(5):
-                sMitte = sMitte + '         <k' + str(k + 1) + '>'
-                sMitte = sMitte + str(line[k])
-                sMitte = sMitte + '</k' + str(k + 1) + '>\n'
-            sMitte = sMitte + '      </koords>\n'
-            sMitte = sMitte + '   </teil>\n'
-            sGesamt = sGesamt + sMitte
+                sMitte += '            <k' + str(k + 1) + '>'
+                sMitte += str(line[k])
+                sMitte += '</k' + str(k + 1) + '>\n'
+            sMitte += '        </koords>\n'
+            sMitte += '    </teil>\n'
+            sGesamt += sMitte
         x = x + 1
-    sGesamt = sGesamt + sEnde 
+    sGesamt += sEnde 
     print(sGesamt)
     
 ausdruck(lGesamt)
