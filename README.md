@@ -19,3 +19,7 @@ theoretische (36x61)^12 = 1.2x10^40 Kombinationen
 
 - ein Ordner mit 12 txt-Dateien 'teile_koordinaten' steht zur Verfuegung
 - Herkunft der Daten: pp_precalc_print.py 
+
+# eine Loesung
+
+- in der main.rs befindet sich Code, der das Problem innerhalb eines Jahres loesen kann
