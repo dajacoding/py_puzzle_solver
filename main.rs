@@ -2,8 +2,6 @@ use std::fs::{File, OpenOptions};
 use std::io::{BufRead, BufReader, Write};
 use std::path::Path;
 use rayon::prelude::*;
-use std::sync::mpsc;
-use std::thread;
 
 //##############################
 //# get information from files # 
