@@ -5,7 +5,6 @@ use rayon::prelude::*;
 use std::sync::mpsc;
 use std::thread;
 
-
 //##############################
 //# get information from files # 
 //##############################
@@ -50,7 +49,6 @@ fn collect_all_files() -> Result<Vec<Vec<[i32; 5]>>, Box<dyn std::error::Error>>
             ))),
         }
     }
-
     Ok(all_results)
 }
 
@@ -137,7 +135,6 @@ fn iter_3(input: &Vec<Vec<u64>>){
     });
 }
 
-
 //##############################
 //#      not_in_results        # 
 //##############################
@@ -168,8 +165,6 @@ fn append_u64(filename: &str, value: u64) -> std::io::Result<()> {
     writeln!(file, "{}", value)?;
     Ok(())
 }
-
-
 
 //##############################
 //#           main             # 
