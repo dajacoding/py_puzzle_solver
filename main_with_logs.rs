@@ -145,14 +145,12 @@ fn setup_logger() -> Result<(), Box<dyn std::error::Error>> {
 // found results are written in a file
 fn iter_3(input: &Vec<Vec<u64>>){  
     setup_logger().expect("Failed to set up logger");
-    let results_log = Arc::new(log::logger());
-  
+    let results_log = Arc::new(log::logger());  
     input[0].par_iter().for_each(|a| {
-        let mut found = false;
-        input[1].iter().for_each(|b| {
+        input[1].par_iter().for_each(|b| {
             let e = a + b; 
             if e.count_ones() == 40 { 
-                input[2].iter().for_each(|c| {
+                input[2].par_iter().for_each(|c| {
                     let d = e + c;
                     if d.count_ones() == 60 {       
                         let result = format!("{}, {}, {}\n", a, b, c);                   
@@ -162,15 +160,12 @@ fn iter_3(input: &Vec<Vec<u64>>){
                             .open("results.txt");
                         let _ = out.expect("error").write_all(result.as_bytes());
                         println!("{:?}, {:?}, {:?}", a, b, c); 
-                        found = true;
                     }
                 });
             }
-        });
-        if !found {
-            let _log = Arc::clone(&results_log);
-            log::info!(target: "not_in_results", "{}", a);
-        }
+        });        
+        let _log = Arc::clone(&results_log);
+        log::info!(target: "not_in_results", "{}", a);        
     });
 }
 
@@ -182,18 +177,21 @@ fn iter_3(input: &Vec<Vec<u64>>){
 // read the file, that contains the excluded u64 
 // returns a vector of u64
 fn read_not_in_results() -> std::io::Result<Vec<u64>> {
-    let file = File::open("not_in_results.log")?;
+    let file = match File::open("not_in_results.log") {
+        Ok(file) => file,
+        Err(e) => {
+            eprintln!("Fehler beim Öffnen der Datei: {}", e);
+            return Err(e);
+        }
+    };
     let reader = BufReader::new(file);    
     let mut numbers = Vec::new();
-    let mut counter = 0;
     for line in reader.lines() {
         let line = line?;
         if let Ok(number) = line.trim().parse::<u64>() {
             numbers.push(number);
-            counter += 1;
         }
     }
-    println!("{}", counter);
     Ok(numbers)
 }
 
@@ -223,11 +221,13 @@ fn main() {
         Ok(vecs) => all_u64_v2 = vecs,
         Err(e) => eprintln!("{}", e),
     };    
+    println!("----------------");
     let mut all_hash = Vec::with_capacity(3);
     match binary_addition(all_u64_v2){
         Ok(vecs) => all_hash = vecs,
         Err(e) => eprintln!("{}", e),
     }
+    println!("----------------");
 
     // reduce u64-entries
     let mut not_in_results_u64 = Vec::new();
@@ -235,7 +235,16 @@ fn main() {
         Ok(numbers) => not_in_results_u64 = numbers,        
         Err(e) => eprintln!("Error reading file: {}", e),
     }
-    all_hash[0].retain(|x| !not_in_results_u64.contains(x));
+    println!("full length     {}",all_hash[0].len());
+    let percent: f64 = (not_in_results_u64.len() as f64 / all_hash[0].len() as f64 * 100.0) as f64;
+    all_hash[0].sort_unstable();
+    not_in_results_u64.sort_unstable();
+    all_hash[0].retain(|x| not_in_results_u64.binary_search(x).is_err());
+    println!("reduced length  {}",all_hash[0].len());
+    println!("checked in abs  {}", not_in_results_u64.len());
+    println!("checked in %    {:.3}", percent);
+    println!("----------------");
+    println!("search continues...");
 
     // start search
     iter_3(&all_hash);
