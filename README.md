@@ -23,3 +23,4 @@ theoretische (36x61)^12 = 1.2x10^40 Kombinationen
 # eine Loesung
 
 - in der main.rs befindet sich Code, der das Problem innerhalb eines Jahres loesen kann
+- main_with_logs.rs und main_logs_and_chunks.rs enthalten Optimierungen
