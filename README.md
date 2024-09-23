@@ -18,5 +18,5 @@ https://davidjann.de/puz_fin.html
 
 ## Anmerkung
 
-- *dist* enthält ein für Windows kompiliertes Programm, das die Darstellung, nach dem Bereitstellen von 3 `u64`-Lösungselementen, erzeugt. Der Ordner enthält *_loesung.txt*, in der exemplarisch 5 Einträge hinterlegt sind.
+- *dist* enthält ein für Windows kompiliertes Programm, das die Darstellung, nach dem Bereitstellen von 3 `u64`-Lösungselementen, erzeugt. Der Ordner enthält *_loesung.txt*, in der exemplarisch 5 Lösungs-Einträge hinterlegt sind.
 - Die Ordner *python* und *rust* enthalten die jeweiligen Programmteile
